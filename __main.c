@@ -5,7 +5,7 @@
 #define forr(i, a, b) for (int i = a; i < b; i++)
 #define forn(i, n) forr(i, 0, n)
 #define MAX_CITIES 2134
-#define MAX_PEOPLE 100000
+#define MAX_PEOPLE 10000
 #define MAX_STR_LENGTH 200
 #define PATH_CITIES "db/codigoLocalidades.txt"
 #define PATH_PEOPLE "db/personas.txt"
@@ -17,6 +17,9 @@ void trim(char *str, const char *seps);
 void chop(char *str);
 char *strChunk(char *str);
 void getNRandoms(int n, int max, int *r);
+void swap(int* a, int* b);
+int partition (int arr[], int low, int high);
+void quickSort(int arr[], int low, int high);
 
 struct Person
 {
@@ -32,7 +35,7 @@ int main()
 {
     FILE *fCities = fopen(PATH_CITIES, "r");
     FILE *fPeople = fopen(PATH_PEOPLE, "r");
-    FILE *fOut = fopen(PATH_OUT, "w");
+    FILE *fOut = fopen(PATH_OUT, "w+");
     
     char GENDERS[] = {'M', 'F'};
     char IGENDERS[] = {'F', 'M', 'A', 'N'};
@@ -43,12 +46,27 @@ int main()
         return -1;
     }
 
-    if (fCities == NULL)
+    if (fPeople == NULL)
     {
         perror(strcat("Error opening: ", PATH_PEOPLE));
         return -1;
     }
 
+	if (fOut == NULL)
+    {
+        perror(strcat("Error opening: ", PATH_OUT));
+        return -1;
+    }
+    
+    int n;
+	do{
+		printf("Ingrese la cantidad de personas que desea obtener (max: %d): ", lengthPeople);
+		scanf("%d", &n);
+	}while(n > lengthPeople);
+	
+	int r[n];
+	getNRandoms(n, lengthPeople, r);
+    
     char cities[MAX_CITIES][MAX_STR_LENGTH];
     int lengthCities = 0;
     char line[MAX_STR_LENGTH];
@@ -97,16 +115,9 @@ int main()
 		
         lengthPeople += 1;
     }
-	int n;
-	do{
-		printf("Ingrese la cantidad de personas que desea obtener (max: %d): ", lengthPeople);
-		scanf("%d", &n);
-	}while(n > lengthPeople);
-	
-	int r[n];
-	getNRandoms(n, lengthPeople, r);
-        
+	 
     forn(i, n){
+		printf("%d\t", r[i]);
         fprintf(fOut, "Name: %s, lastName: %s, city: %s, age: %d,gender: %c, igender: %c\n",
         people[r[i]].name, people[r[i]].lastName, people[r[i]].localCode, people[r[i]].age, people[r[i]].gen, people[r[i]].igen);
 	}
@@ -185,6 +196,40 @@ char *strChunk(char *str){
     return output;
 }
 
+void swap(int* a, int* b)  
+{  
+    int t = *a;  
+    *a = *b;  
+    *b = t;  
+}  
+  
+int partition (int arr[], int low, int high)  
+{  
+    int pivot = arr[high];
+    int i = (low - 1); 
+  
+    for (int j = low; j <= high - 1; j++)  
+    {  
+        if (arr[j] < pivot)  
+        {  
+            i++;
+            swap(&arr[i], &arr[j]);  
+        }  
+    }  
+    swap(&arr[i + 1], &arr[high]);  
+    return (i + 1);  
+}  
+
+void quickSort(int arr[], int low, int high)  
+{  
+    if (low < high)  
+    {  
+        int pi = partition(arr, low, high);  
+        quickSort(arr, low, pi - 1);  
+        quickSort(arr, pi + 1, high);  
+    }  
+}  
+  
 void getNRandoms(int n, int max, int *r){
 	int p[n];
 	int new;
@@ -196,4 +241,5 @@ void getNRandoms(int n, int max, int *r){
 		p[new] = 1;
 		r[i] = new;
 	}
+	quickSort(r, 0, n-1);
 }
