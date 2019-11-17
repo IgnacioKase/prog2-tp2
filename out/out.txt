@@ -1,5 +1,0 @@
-Name: CELERINO, lastName: MONTES, city: SAN PEDRO, age: 52,gender: M, igender: F
-Name: TERESITA, lastName: JIMENEZ, city: LAS BRISAS, age: 89,gender: F, igender: A
-Name: FRANCISCO, lastName: GONZALEZ, city: C.P. CRISTO REY, age: 43,gender: M, igender: A
-Name: GLADYS, lastName: VALLE, city: SILENCIO, age: 32,gender: F, igender: M
-Name: ANTONIO, lastName: ARIAS, city: SANTA MARIA, age: 89,gender: M, igender: F
