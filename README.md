@@ -14,9 +14,9 @@ Para compilar el programa,
 
 # Argumentos
 
-arg1 = Path al archivo de ciudades
-arg2 = Path al archivo de personas
-arg3 = Path al archivo de salida
+- arg1 = Path al archivo de ciudades
+- arg2 = Path al archivo de personas
+- arg3 = Path al archivo de salida
 
 # Utilidad
 
