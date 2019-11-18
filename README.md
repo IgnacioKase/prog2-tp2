@@ -1,24 +1,6 @@
-# prog2-tp2
+# TPN°2 - Programación 2 - LCC - UNR
 
-TPN°2 C
-
-# Compilar
-
-Para compilar el programa,
-
-\$ gcc \_\_main.c
-
-# Ejecutar
-
-\$ fileName arg1 arg2 arg3
-
-# Argumentos
-
-- arg1 = Path al archivo de ciudades
-- arg2 = Path al archivo de personas
-- arg3 = Path al archivo de salida
-
-# Utilidad
+### KASEVICH, IGNACIO
 
 Este programa toma 3 archivos:
 
@@ -38,6 +20,22 @@ género y el género de interes.
 
 Ejemplos de los archivos de entrada se pueden encontrar
 en la carpeta db
+
+# Compilar
+
+Para compilar el programa,
+
+\$ gcc \_\_main.c
+
+# Ejecutar
+
+\$ fileName arg1 arg2 arg3
+
+# Argumentos
+
+- arg1 = Path al archivo de ciudades
+- arg2 = Path al archivo de personas
+- arg3 = Path al archivo de salida
 
 # Boceto de funcionamiento
 
@@ -60,5 +58,4 @@ Leo las @max_city ciudades.
 
 Escribo los archivos de salida
 
-#######
-Este approach sirve para ~10^4 ciudades y ~4\*10^4 personas
+### Este approach sirve para ~10^4 ciudades y ~4\*10^4 personas ####

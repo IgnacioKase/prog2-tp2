@@ -1,3 +1,15 @@
+/*
+ TRABAJO PRÁCTICO N° 2
+ GENERACIÓN/LECTURA DE ARCHIVOS - C
+
+ INTEGRANTES:
+       - KASEVICH, IGNACIO
+
+ GIT: https://github.com/IgnacioKase/prog2-tp2
+
+ 17/11/2019
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
